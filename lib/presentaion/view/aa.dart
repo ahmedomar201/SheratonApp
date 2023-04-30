@@ -12,13 +12,13 @@ class _BouncingBallDemoState extends State<BouncingBallDemo> {
 
   void changePosition(Timer t) async {
     setState(() {
-      marginTop = marginTop == 0 ? 100 : 0;
+      marginTop = marginTop == 0 ? 600 : 0;
     });
   }
 
   void changePosition1(Timer t) async {
     setState(() {
-      margin1 = margin1 == 0 ? 100 : 0;
+      margin1 = margin1 == 0 ? 500 : 0;
     });
   }
 
@@ -35,26 +35,38 @@ class _BouncingBallDemoState extends State<BouncingBallDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      constraints: BoxConstraints.expand(),
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("assets/BackHeader.png"), fit: BoxFit.cover),
-      ),
-      child: Container(
-        margin: EdgeInsets.only(bottom: marginTop),
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 300),
-            child: Image(
-              image: AssetImage("assets/basketball.png"),
-              height: 5,
-              width: 5,
+        body: Stack(
+          children: [
+            Container(
+              constraints: BoxConstraints.expand(),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/BackHeader.png"), fit: BoxFit.cover),
+              ),
+              child: Container(
+                margin: EdgeInsets.only(top: marginTop),
+
+                child: Container(
+                  constraints: BoxConstraints.expand(),
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/basketball.png"),
+                    ),
+                  ),
+
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
-    ));
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: Image(
+                image: AssetImage("assets/Hole.png"),
+              ) //Text
+            ),
+          ],
+        )
+
+    );
 
     // Container(
     //   constraints: BoxConstraints.expand(),
@@ -78,3 +90,4 @@ class _BouncingBallDemoState extends State<BouncingBallDemo> {
     // ),
   }
 }
+//AssetImage("assets/Hole.png"),
